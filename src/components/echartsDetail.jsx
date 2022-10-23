@@ -16,7 +16,7 @@ class test2 extends Component {
     }
  
     componentDidMount() {
-        let myChart = echarts.init(document.getElementById("main"))
+        let myChart = echarts.init(document.getElementById("main1"))
         myChart.setOption({
             xAxis: {
                 type: 'category',
@@ -34,7 +34,7 @@ class test2 extends Component {
  
     render() {
         return (
-            <div id="main" style={{ width: 600, height: 600 }}></div>
+            <div id="main1" style={{ width: 600, height: 600 }}></div>
         );
     }
 }
