@@ -48,7 +48,7 @@ const Line = () => {
                 // 数据点填充的颜色
                 color: 'red'
             },
-            // 在数据点出显示数值
+            // 在数据点处显示数值
             label: {
                 // 为true即为默认就始终显示，如果为false，但 series.emphasis.label.show 为 true，
                 // 则代表只有在鼠标经过数据点的时候才显示数值

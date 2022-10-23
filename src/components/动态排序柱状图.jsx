@@ -14,6 +14,12 @@ const Picture = () => {
             data.push(Math.round(Math.random() * 200));
         }
         let option = {
+            // 关闭动画
+            // animation:false
+            
+            // animationDelay和animationDelayUpdate用于设置动画延迟开始的时间，
+            // 通常我们会使用回调函数将不同数据设置不同的延时来实现交错动画的效果：
+
             xAxis: {
                 // 表示用数据的最大值作为X轴最大值
                 max: 'dataMax'
@@ -52,6 +58,7 @@ const Picture = () => {
             animationDuration: 3000,
             // 表示每次更新动画的时长，应与setOption改变数据的频率相同
             animationDurationUpdate: 3000,
+
             animationEasing: 'linear',
             animationEasingUpdate: 'linear'
         };
