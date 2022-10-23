@@ -4,7 +4,11 @@ import React from 'react';
 
 const Picture = () => {
     useEffect(() => {
-        let myChart = echarts.init(document.getElementById('main2'))
+        let myEchart
+        if (myEchart != null && myEchart !== "" && myEchart !== undefined) {
+            myEchart.dispose();//销毁
+        }
+        myEchart = echarts.init(document.getElementById('main2'))
         let data = [];
         for (let i = 0; i < 5; ++i) {
             data.push(Math.round(Math.random() * 200));
@@ -61,7 +65,7 @@ const Picture = () => {
                     data[i] += Math.round(Math.random() * 200);
                 }
             }
-            myChart.setOption(option);
+            myEchart.setOption(option);
         }
         setInterval(() => {
             update();
