@@ -1,6 +1,6 @@
 import TestRef from './components/useRef.jsx'
 import TestEffect from './components/useEffect.jsx'
-import Echarts from './components/echarts.jsx'
+import Echarts from './components/折线图.jsx'
 import TestEcharts from './components/echartsDetail.jsx'
 import './App.css';
 
