@@ -16,7 +16,8 @@ class test2 extends Component {
     }
  
     componentDidMount() {
-        let myChart = echarts.init(document.getElementById("main1"))
+        // 'dark'为内置的环境主题
+        let myChart = echarts.init(document.getElementById("main1"),'dark')
         myChart.setOption({
             xAxis: {
                 type: 'category',
