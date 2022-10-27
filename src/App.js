@@ -5,6 +5,7 @@ import TestEcharts from './components/echartsDetail.jsx'
 import DynamicEcharts from './components/动态排序柱状图.jsx'
 import PieEcharts from './components/饼图.jsx'
 import TestTransition from './components/useTransition.jsx'
+import TestImperativeHandle from './components/useImperativeHandle.jsx'
 import './App.css';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
     <DynamicEcharts/>
     <PieEcharts/>
     <TestTransition/>
+    <TestImperativeHandle/>
     </>
   );
 }
