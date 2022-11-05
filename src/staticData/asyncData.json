@@ -1,14 +1,18 @@
 [
+  {
+    "value":4.8,
+    "name":"1993年"
+  },
     {
-      "value": 335,
-      "name": "A"
+      "value": 7.1,
+      "name": "1998年"
     },
     {
-      "value": 234,
-      "name": "B"
+      "value": 10.8,
+      "name": "2003年"
     },
     {
-      "value": 1548,
-      "name": "C"
+      "value":18.3,
+      "name":"2008年"
     }
 ]

@@ -27,7 +27,7 @@ class test2 extends Component {
                 type: 'value'
             },
             series: [{
-                data: [150, 230, 224, 218, 135, 147, 260],
+                data: [-150, 230, 224, 218, 135, 147, 260],
                 type: 'line'
             }]
         })

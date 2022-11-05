@@ -21,9 +21,9 @@ const App = () => {
         <>
             <input type="text" onChange={handleChange} />
             {isPending && <div>transition......</div> }
-            {Array(10000).fill('a').map(() => {
+            {Array(10000).fill('a').map((item,index) => {
                 return (
-                    <div>{value}</div>
+                    <div key={index}>{value}</div>
                 )
             })}
         </>

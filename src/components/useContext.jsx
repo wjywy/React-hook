@@ -12,27 +12,27 @@ const numberContext = React.createContext()
 
 const App = () => {
     return (
-// 使用Provider为所有子孙提供value值
+        // 使用Provider为所有子孙提供value值
 
         <>
-        <numberContext.Provider value = {520}>
-            <div>
-                <ShowAn></ShowAn>
-            </div>
-            </numberContext.Provider> 
+            <numberContext.Provider value={520}>
+                <div>
+                    <ShowAn></ShowAn>
+                </div>
+            </numberContext.Provider>
         </>
     )
 }
 
 const ShowAn = () => {
-// 调用Consumer从上下文中获取value
-// 调用useContext，传入从React.createContext获取的上下文对象
+    // 调用Consumer从上下文中获取value
+    // 调用useContext，传入从React.createContext获取的上下文对象
     const value = useContext(numberContext)
     return (
         <>
-        <div>
-            the answer is {value}
-        </div>
+            <div>
+                the answer is {value}
+            </div>
         </>
     )
 }

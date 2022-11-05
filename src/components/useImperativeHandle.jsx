@@ -37,7 +37,7 @@ import React, {
     const [ fresh, setFresh ] = useState(false)
     const attRef = useRef(0);
     // useImperativeHandle的第一个参数是定义current对象的ref，第二个参数是一个函数，返回值是一个对象，
-    // 即这个ref的current对象
+    // 即这个ref的current对象。可以自定义父组件的ref来使用子组件ref的某些方法
     useImperativeHandle(ref, () => ({
       attRef,
       fresh

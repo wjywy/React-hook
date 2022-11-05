@@ -12,6 +12,9 @@ const App = () => {
         // 内置的dark主题
         myEchart = echarts.init(document.getElementById('main3'))
         let option = {
+            title:{
+                text:'不同年份患病人数比例',
+            },
             // 对图形的解释部分
             legend:{
                 padding:0,
@@ -20,10 +23,10 @@ const App = () => {
                 // 设置图例在X轴方向上的位置以及在Y轴方向上的位置
                 // x轴方向有left、center、right三个值
                 // y轴方向有top、center、bottom三个值
-                x:'center',
-                y:'top',
+                x:'right',
+                y:'bottom',
                 // 设置图例之间的间距
-                itemGap:40,
+                itemGap:20,
                 // 控制图例图形的高度
                 itemHeight:50,
                 // 设置图例的某个选项的数据默认是显示还是隐藏。
@@ -33,9 +36,9 @@ const App = () => {
                 // 如果设置该项，必须与series设置的信息一致，才会生效。
                 // 该属性的作用：可以直接对某一项图例设置样式
                 data:[{
-                    name:'A',
+                    name:'1993年',
                     textStyle: {fontWeight: 'bold', color: 'orange'}
-                },'B','C']
+                },'1998年','2003年','2008年']
             },
 
             // tooltip:提示框组件，用于配置鼠标滑过或点击图表时的显示框。
@@ -43,11 +46,11 @@ const App = () => {
 
             // },
 
-            title: {
-                text: '圆环图的例子',
-                left: 'center',
-                top: 'center'
-            },
+            // title: {
+            //     text: '圆环图的例子',
+            //     left: 'center',
+            //     top: 'center'
+            // },
             // 全局调色盘，给定了一组颜色，系列会自动的从其中选择颜色。也可以设置局部调色盘
             color: [
                 '#c23531',
@@ -71,14 +74,17 @@ const App = () => {
                     // radius:'50%'
 
                     // 圆环图，将radius写成数组的形式，会自动使用较小的作为内半径
-                    radius: ['40%', '70%']
+                    // radius: ['40%', '70%']
+                    label:{
+                        show:true
+                    }
                 },
             ]
         };
         myEchart.setOption(option)
     })
     return (
-        <div id="main3" style={{ width: 300, height: 400 }}></div>
+        <div id="main3" style={{ width: 600, height: 500 }}></div>
     )
 }
 
