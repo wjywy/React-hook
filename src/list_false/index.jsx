@@ -35,7 +35,6 @@ export default function App() {
         containerHeight={300}
         itemCount={list.length}
         itemHeight={50}
-        Item
       >
         {Item}
       </FixedSizeList>
