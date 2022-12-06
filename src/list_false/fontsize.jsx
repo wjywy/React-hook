@@ -2,6 +2,14 @@
  * 一个将 items 往下推到正确位置的空元素
  */
  import { useState } from 'react';
+//  flushSync——可以退出批处理，接受一个函数作为参数，并且允许返回值,flushsync内部会以函数为作用域，函数内部的多个setState仍然为批量更新
+// function handleClick() {
+//   flushSync(() => {
+//     setCount(3);
+//   });
+//  // 会在 setCount 并 render 之后再执行 setFlag
+//   setFlag(true);
+// }
  import { flushSync } from 'react-dom';
  
  function FixedSizeList({ containerHeight, itemHeight, itemCount, children }) {

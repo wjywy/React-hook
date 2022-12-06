@@ -1,15 +1,22 @@
 // 对于复杂的state操作逻辑,嵌套的state的对象,使用useReducer
 
 import { useReducer } from "react" //导入useReducer这个钩子函数
+import React from "react"
 
 // 设定初始值为0
 const initialState = {
-    count:0                  
+    count:1                  
 }
 
+type ActionType = {
+    type:'increment' | 'decrement'
+}
+
+type State = { count: number }
+
 // 建立reducer函数
-const reducer = (state = initialState, action) => {   
-    switch (action.type) {
+function reducer (state: State,action:ActionType) {
+        switch (action.type) {
         case 'increment':
             return {count:state.count + 1}
         case 'decrement':

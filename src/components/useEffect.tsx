@@ -1,3 +1,5 @@
+// useeffect基本用不着ts
+
 // 跟数据计算无关的操作，即负效应操作使用useEffect
 // useEffect常见的用途：
 // 1.获取数据（data fetching）
@@ -10,7 +12,7 @@
 import React, { useState, useEffect } from 'react'
 
 export default function App() {
-    const [state, setstate] = useState(0)
+    const [state, setstate] = useState<number>(0)
 
     useEffect(() => {
         document.title = `你点击了${state}次`
