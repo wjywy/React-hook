@@ -1,7 +1,6 @@
 export const chinaMapConfig = (configData) => {
-    const { data, max, min } = configData;
-  
-    return {
+    let { data, max, min } = configData;
+    return [{
       title: {
         text: "数据地图",
         left: "right",
@@ -11,23 +10,14 @@ export const chinaMapConfig = (configData) => {
       },
       tooltip: {
         // 提示框
+        triggerOn: 'mousemove',
         trigger: "item",
         showDelay: 0,
         transitionDuration: 0.2,
         formatter: function (params) {
-          console.log('params', params)
-          let { data = {} } = params;
-          let { value = 0 } = data;
           return `受众人群:${params.name}<br/>
                     平均价格: ${params.dataIndex}<br/>
                     品牌销量:${params.dataIndex}`    //只能使用模板字符串
-        // return ( 
-        //     <>
-        //     <div>受众人群{params.name}</div>
-        //     <div>平均价格{value}</div>
-        //     <div>品牌销量{value}</div>
-        //     </>
-        // )
         }
       },
       label: {
@@ -52,7 +42,7 @@ export const chinaMapConfig = (configData) => {
         },
         text: [`最大值：${max}`, 0],
         textStyle: {
-          color: "#000"
+          color: 'white'
         }
         // calculable: true
       },
@@ -92,5 +82,5 @@ export const chinaMapConfig = (configData) => {
         },
         top: "10%" // 距离顶部距离
       }
-    };
+    }];
   };
