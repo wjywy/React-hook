@@ -5,7 +5,7 @@ export const chinaMapConfig = (configData) => {
         text: "数据地图",
         left: "right",
         textStyle: {
-          color: "#000"
+          color: 'white'
         }
       },
       tooltip: {

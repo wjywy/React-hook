@@ -1,7 +1,7 @@
 import React from "react"
 import * as echarts from 'echarts/core'
 import { useEffect } from "react"
-import cookieData from '../staticData/asyncData.json'
+import cookieData from '../../staticData/asyncData.json'
 
 const App = () => {
     useEffect(() => {

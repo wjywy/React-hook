@@ -5,6 +5,7 @@ import { china } from '../../data/chinese/中华人民共和国'
 import { chinaMapConfig } from "./config";
 import { resData } from "./data";
 import { useState, useRef } from "react";
+// import TopTab from '../../components/topTab/index'
 import './home.css'
 
 const App = () => {
@@ -31,8 +32,9 @@ const App = () => {
     }, [id])
     return (
         <>
+            {/* <TopTab /> */}
             <div className="home_divide">
-                <div ref={main} style={{ width: '70%', height: '99vh' }}></div>
+                <div ref={main} style={{ width: '70%', height: '91vh' }}></div>
                 {resData.data.map((item, index) => {
                     return id === item.name && <RightPicture item={item} key={index} />
                 })}
@@ -70,7 +72,7 @@ export let RightPicture = (props) => {
         myEcharts.setOption(option)
     }, [data, props])
     return (
-        <div ref={main1} style={{ width: '30%', height: '99vh' }}></div>
+        <div ref={main1} style={{ width: '30%', height: '91vh' }}></div>
     )
 }
 export default App
