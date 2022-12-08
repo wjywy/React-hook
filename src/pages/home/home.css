@@ -1,4 +1,7 @@
-.home_divide {
-  display: flex;
-  flex-direction: row;
+body {
+  background-color: #09295b;
+}
+.home_total {
+  display: grid;
+  grid-template-columns: 40% 30% 30%;
 }

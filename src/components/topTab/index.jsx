@@ -49,6 +49,9 @@ const App = () => {
     const to_prediction = () => {
         navigate('/top/prediction', { replace: false })
     }
+    const to_province = () => {
+        navigate('/top/province',{replace:false})
+    }
     const to_record = () => {
         navigate('/top/record', { replace: false })
     }
@@ -61,7 +64,7 @@ const App = () => {
                     <div onClick={to_home}>首页</div>
                     <div onClick={to_assay}>指标分析</div>
                     <div onClick={to_prediction}>在线预测</div>
-                    <div>省份信息</div>
+                    <div onClick={to_province}>省份信息</div>
                     <div style={{ marginRight: 300 }} onClick={to_record}>我的记录</div>
                     <GetTime />
                 </div>

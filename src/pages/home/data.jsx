@@ -139,4 +139,25 @@ export const resData = {
       }
     ]
   };
+
+export const scaleData = [{
+    'name': '18周岁以下',
+    'value': 10
+},
+{
+    'name': '18-30岁',
+    'value': 20
+},
+{
+    'name': '30-45',
+    'value': 20
+},
+{
+    'name': '45-60',
+    'value': 27
+},
+{
+    'name': '60周岁以上',
+    'value': 23
+}];
   
