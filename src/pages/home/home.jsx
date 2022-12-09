@@ -33,6 +33,23 @@ const App = () => {
     }, [id])
     return (
         <>
+              <section className="sky">
+                <span className="start"></span>
+                <span className="start"></span>
+                <span className="start"></span>
+                <span className="start"></span>
+                <span className="start"></span>
+                <span className="start"></span>
+                <span className="start"></span>
+                <span className="start"></span>
+                <span className="start"></span>
+                <span className="start"></span>
+                <span className="start"></span>
+                <span className="start"></span>
+                <span className="start"></span>
+                <span className="start"></span>
+
+            </section>
             <div className="home_total">
                 <div style={{color:'white'}} className='home_left'>
                     <Pieleft />
