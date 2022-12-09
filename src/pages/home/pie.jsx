@@ -3,7 +3,6 @@ import React,{
     useRef
 } from "react";
 import { scaleData } from "./data";
-// import { optionPie } from "./config";
 import * as echarts from 'echarts';
 
 const App = () => {
@@ -13,12 +12,12 @@ const App = () => {
         if (myEchart != null && myEchart !== "" && myEchart !== undefined) {
             myEchart.dispose();//销毁
         }
-        myEchart = echarts.init(piemain.current, 'dark')   //初始化
+        myEchart = echarts.init(piemain.current)   //初始化
         let rich = {
             white: {
                 color: '#ddd',
                 align: 'center',
-                padding: [5, 0]
+                // padding: [5, 0]
             }
         };
         let placeHolderStyle = {
@@ -63,7 +62,7 @@ const App = () => {
             name: '',
             type: 'pie',
             clockWise: false,
-            radius: [195, 200],
+            radius: [100, 106],
             hoverAnimation: false,
             itemStyle: {
                 normal: {
@@ -95,13 +94,12 @@ const App = () => {
         }];
         let title = {
             text:'消费者年龄分布',
-            left: "right",
+            left: 'right',
             textStyle:{
                 color:'white'
             }
         }
         let option = {
-            backgroundColor: '#04243E',
             tooltip: {
                 show: false
             },
@@ -121,7 +119,7 @@ const App = () => {
     },[])
     return (
         <>
-        <div ref={piemain} style={{width: '100%', height: '60vh' }}></div>
+        <div ref={piemain} style={{width: '83%', height: '35vh' }} className='home_left_pie'></div>
         </>
     )
 }

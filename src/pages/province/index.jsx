@@ -1,9 +1,10 @@
 import React from "react";
+import Input from "antd/es/input/Input";
 
 const App = () => {
     return (
         <>
-        <div>欢迎浏览省份信息</div>
+            <Input placeholder="请输入查询省份" />
         </>
     )
 }

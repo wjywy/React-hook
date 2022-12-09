@@ -4,7 +4,56 @@ body {
 
 .home_total {
     display: grid;
-    grid-template-columns: 40% 30% 30%;
+    grid-template-columns: 35% 30% 35%;
+
+    .home_left {
+        margin-left: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        // margin-top: 50px;
+    }
+
+    .home_divide {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-right: 50px;
+    }
+
+    .home_zhu {}
 }
 
+.home_left_pie, .home_right_bar {
+    position: relative;
+    background: rgba(1, 19, 67, 0.3);
+    border: 2px solid #00a1ff;
+    border-radius: 8px;
+    margin-top: 50px;
+}
 
+.home_left_pie::before ,.home_right_bar::before {
+    position: absolute;
+    top: -2px;
+    bottom: -2px;
+    left: 30px;
+    width: calc(100% - 100px);
+    content: "";
+    border-top: 2px solid #016886;
+    border-bottom: 2px solid #016886;
+    z-index: 0;
+}
+
+.home_left_pie::after ,.home_right_bar::after{
+    position: absolute;
+    top: 30px;
+    right: -2px;
+    left: -2px;
+    height: calc(100% - 100px);
+    content: "";
+    border-right: 2px solid #016886;
+    border-left: 2px solid #016886;
+    z-index: 0;
+}
