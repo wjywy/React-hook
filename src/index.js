@@ -6,11 +6,17 @@ import App from './App'
 
 // import reportWebVitals from './reportWebVitals';
 
+// const script = ReactDOM.createRoot(document.getElementById('script')) 
+// script.src = "http://api.map.baidu.com/api?type=webgl&v=1.0&ak=8U4fxT7GFqgxPivHgUMHAk9qP0cI7cG9"
+
+// ReactDOM.render(<App />, document.getElementById('container'));
 const root = ReactDOM.createRoot(document.getElementById('root'));
+// const script = document.createElement('script')
+// script.type = 'text/javaScript'
+// script.src = 'http://api.map.baidu.com/api?type=webgl&v=1.0&ak=8U4fxT7GFqgxPivHgUMHAk9qP0cI7cG9'
+// // script.onerror = reject
+// document.body.appendChild(script)
 root.render(
-  // <React.StrictMode>
-  //   <App/>
-  // </React.StrictMode>
   <BrowserRouter>
     <Routes>
       <Route path='/*' element={<App />} />

@@ -104,13 +104,6 @@ export let RightPicture = (props) => {
                        }
                    }
                },
-               legend: {
-                   data: ["销售水量", "主营业务"],
-                   top: "15%",
-                   textStyle: {
-                       color: "#ffffff"
-                   }
-               },
                xAxis: {
                    data: [
                        '奶茶店数量', 

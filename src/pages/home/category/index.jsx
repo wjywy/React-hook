@@ -18,7 +18,8 @@ const App = () => {
             title: {
                 text:'实时预测茶饮品牌销售额走向',
                 textStyle:{
-                    fontSize:12
+                    fontSize:12,
+                    color:'white'
                 }
             },
             xAxis:{},
@@ -27,11 +28,14 @@ const App = () => {
             },
             legend:{
                 data:['销售额'],
-                left:'right'
+                left:'right',
+                textStyle:{
+                    color:'white'
+                }
             },
             yAxis:{
                 type:'category',
-                data:['茶百道','喜茶','星巴克','书亦','蜜雪']
+                data:['茶百道','喜茶','星巴克','书亦','蜜雪'],
             },
             series:[{
                 name:'销售额',
