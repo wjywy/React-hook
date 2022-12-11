@@ -16,7 +16,7 @@ import './index.css'
 const { Search } = Input
 
 const App = () => {
-    let [value, setValue] = useState(null)
+    let [value, setValue] = useState('重庆')
     let [maptop, setMap] = useState(null)
     let [local,setLocal] = useState(null)
     let [ref,setRef] = useState(null)
@@ -47,6 +47,8 @@ const App = () => {
     function getMap(ref) {
         if (ref !== null && ref.map) {
             setMap(ref.map)
+            getCarInfo(maptop)
+            getDegree(maptop)
         }
     }
 
@@ -60,7 +62,7 @@ const App = () => {
         localvalue.search( value )
     }
 
-    // 两地之间的路线规划图
+    // 两地之间的步行路线规划图
     function getWalkingInfo (map) {
         map.enableScrollWheelZoom()
         let walking = new window.BMapGL.WalkingRoute(map,{
@@ -69,10 +71,29 @@ const App = () => {
         console.log('location',local)
         walking.search(local,value)
     }
-    // useEffect(() => {
-    //     console.log('maptop',maptop)
-    //     getWalkingInfo(maptop)
-    // },[value])
+
+    // 两地之间的行车路线规划图
+    function getCarInfo(map) {
+        let p1 = new window.BMapGL.Point(116.301934,39.977552)
+        let p2 = new window.BMapGL.Point(116.508328,39.919141)  
+        let driving = new window.BMapGL.DrivingRoute(map,{
+            renderOptions:{map:map,autoViewport:true}
+        })
+        driving.search(p1,p2)
+    }
+
+    // 地址解析(将坐标解析为经纬度)
+    function getDegree (map) {
+        let myGeo = new window.BMapGL.Geocoder()
+        // 将地址解析结果显示在地图上，并调整地图视野
+        myGeo.getPoint('重庆',function(point) {
+            if (point) {
+                console.log('point',point)
+                map.centerAndZoom(point,16)
+                map.addOverlay(new window.BMapGL.Marker(point,{title:'重庆'}))
+            }
+        },'重庆市')
+    }
 
     return (
         <>
