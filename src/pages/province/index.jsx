@@ -3,14 +3,13 @@ import {
     Map,
     Marker,
     NavigationControl,
-    InfoWindow,
     CityListControl,
     MapTypeControl,
     ScaleControl,
     AutoComplete   //是结果提示、自动完成类，不依赖地图进行展示，是仅调用地图API的服务
 } from 'react-bmapgl';
 import { useState, useEffect, useRef } from "react";
-import { Button, Input } from "antd";
+import { Button, Input, Select } from "antd";
 import './index.css'
 // import { configConsumerProps } from "antd/es/config-provider";
 
@@ -39,6 +38,13 @@ const App = () => {
         getCarInfo(maptop)
     }
 
+    // 得到map实例
+    function getMap(ref) {
+        if (ref !== null && ref.map) {
+            setMap(ref.map)
+        }
+    }
+
     // 定位当前城市
     function getLocalCity() {
         let locatCity = new window.BMapGL.LocalCity()
@@ -48,10 +54,22 @@ const App = () => {
         })
     }
 
+    // 处理起点的输入框
+    function handleStart (e) {
+        console.log('value',e.target.value)
+        setLocal(e.target.value)
+    }
+
+    // 处理终点的输入框
+    function handleEnd (e) {
+        console.log('endvalue',e.target.value)
+        setValue(e.target.value)
+    }
+
     // 获取搜素框的值
     function inputSearch(valueSearch, e) {
         console.log('antdSearch', valueSearch)
-        getLocalCity()
+        // getLocalCity()
         setValue(valueSearch)
         console.log('inputvalue', value)
         getCenter(maptop)
@@ -61,13 +79,6 @@ const App = () => {
     function changeValue(e) {
         setValue(e.target.value)
         console.log('localPOint', localPoint.lng)
-    }
-
-    // 得到map实例
-    function getMap(ref) {
-        if (ref !== null && ref.map) {
-            setMap(ref.map)
-        }
     }
 
     // 点击开始搜索之后显示的区域
@@ -99,16 +110,16 @@ const App = () => {
     // 两地之间的行车路线规划图
     function getCarInfo(map) {
         // map.enableScrollWheelZoom()
-        let end = new window.BMapGL.Point(116.486419, 39.877282)
-        getDegree(value,typeValue)
+        // let end = new window.BMapGL.Point(116.486419, 39.877282)
+        // getDegree(value, typeValue)
         let driving = new window.BMapGL.DrivingRoute(map, {
             renderOptions: { map: map, autoViewport: true }
         })
-        console.log('end',valuePoint)
-        driving.search(localPoint,valuePoint)
+        console.log('end', valuePoint)
+        driving.search(localPoint, valuePoint)
     }
 
-    // 两地之间的公交导航
+    // 公交导航查询，根据车的号数
     function getBusInfo(map) {
         let busline = new window.BMapGL.BusLineSearch(map, {
             renderOptions: { map: map, panel: 'r-result' },
@@ -126,6 +137,36 @@ const App = () => {
         setTimeout(function () {
             busSearch()
         }, 1500)
+    }
+
+    // 公交导航查询，根据起始地
+    function getBusInfoinfo(map) {
+        let start = localPoint
+        let end = valuePoint
+        var routePolicy = ['BMAP_TRANSIT_POLICY_RECOMMEND', 'BMAP_TRANSIT_POLICY_LEAST_TIME',
+            'BMAP_TRANSIT_POLICY_LEAST_TRANSFER', 'BMAP_TRANSIT_POLICY_LEAST_WALKING',
+            'BMAP_TRANSIT_POLICY_AVOID_SUBWAYS', 'BMAP_TRANSIT_POLICY_FIRST_SUBWAYS']
+
+    }
+    function handleChange(value, en) {
+        console.log('select', value)
+        let optionValue = value
+        console.log(en)
+        let start = localPoint
+        let end = valuePoint
+        var routePolicy = ['BMAP_TRANSIT_POLICY_RECOMMEND', 'BMAP_TRANSIT_POLICY_LEAST_TIME',
+            'BMAP_TRANSIT_POLICY_LEAST_TRANSFER', 'BMAP_TRANSIT_POLICY_LEAST_WALKING',
+            'BMAP_TRANSIT_POLICY_AVOID_SUBWAYS', 'BMAP_TRANSIT_POLICY_FIRST_SUBWAYS']
+        let transit = new window.BMapGL.TransitRoute(maptop, {
+            renderOptions: { map: maptop, panel: 'r-result' },
+            policy: 0,
+        })
+        maptop.clearOverlays();
+        search(start,end,routePolicy[optionValue])
+        function search (start,end,route) {
+            transit.setPolicy(route)
+            transit.search(start,end)
+        }
     }
 
     // 地址解析(将坐标解析为经纬度)
@@ -149,37 +190,65 @@ const App = () => {
             getDegree(local, typeLocal)
         }
         if (local != null) {
-            getDegree(value,typeValue)
+            getDegree(value, typeValue)
         }
-    }, [local,value])
+    }, [local, value])
 
     return (
         <div className="province_total">
             <div className="province_find" >
                 <div className="province_table">
                     <label htmlFor="start" style={{ color: 'white' }}>起点</label>
-                    <Input id="start" style={{ width: 400, marginLeft: 20, marginTop: 20 }}></Input>
+                    <Input id="start" style={{ width: 400, marginLeft: 20, marginTop: 20 }} onChange={handleStart}></Input>
                 </div>
                 <div className="province_table">
-                    <label htmlFor="end" style={{ color: 'white' }}>终点</label>
-                    <Input id="end" style={{ width: 400, marginLeft: 20, marginTop: 20 }}></Input>
+                    <label htmlFor="end" style={{ color: 'white' }} >终点</label>
+                    <Input id="end" style={{ width: 400, marginLeft: 20, marginTop: 20 ,marginBottom:20}} onChange={handleEnd}></Input>
                 </div>
-
-                <Button value={'查询'} style={{ marginLeft: 70, marginTop: 20, marginBottom: 20 }}>点击查询</Button>
                 <div>
                     <Search placeholder="请输入查询种类" id="ac"
                         className="searchInput"
                         enterButton="点击搜索" onSearch={inputSearch}
                         onChange={changeValue} />
-                    <Button onClick={turnBus}>公交导航</Button>
+                    <Select
+                        // defaultValue={'公交导航'}
+                        value={'公交导航'}
+                        style={{ width: 150 }}
+                        onChange={handleChange}
+                        options={[
+                            {
+                                value: 0,
+                                label: '最少时间'
+                            },
+                            {
+                                value: 1,
+                                label: '推荐方案'
+                            },
+                            {
+                                value: 2,
+                                label: '最少换乘'
+                            },
+                            {
+                                value: 3,
+                                label: '最少步行'
+                            },
+                            {
+                                value: 4,
+                                label: '不乘地铁'
+                            },
+                            {
+                                value: 5,
+                                label: '优先地铁'
+                            }
+                        ]}
+                    >
+                    </Select>
                     <Button onClick={turnFoot}>步行导航</Button>
                     <Button onClick={turnCar}>驾车导航</Button>
                 </div>
 
                 <Map
                     ref={(ref) => getMap(ref)}
-                    // center={{ lng: 116.402544, lat: 39.928216 }}
-                    // zoom="11"
                     className={'province_map'}
                     enableScrollWheelZoom>
                     {localPoint != null &&
