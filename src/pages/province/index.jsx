@@ -21,6 +21,7 @@ const App = () => {
     let [local, setLocal] = useState(null)
     let [localPoint, setLocalPoint] = useState(null) //开启本地经纬度转换
     let [valuePoint, setValuePoint] = useState(null) //开启目标区域经纬度转换
+    let [disLocal, setDisLocal] = useState(true) //在满足一定条件下才能使用本地位置接口
     let typeValue = 1 // 开启目标区域经纬度转换的开关
     let typeLocal = 2 //  开启本地经纬度转换的开关
 
@@ -55,14 +56,19 @@ const App = () => {
     }
 
     // 处理起点的输入框
-    function handleStart (e) {
-        console.log('value',e.target.value)
-        setLocal(e.target.value)
+    function handleStart(e) {
+        if (e.target.value == '') {
+            setDisLocal(true)
+        } else {
+            setDisLocal(false)
+            console.log('value', e.target.value)
+            setLocal(e.target.value)
+        }
     }
 
     // 处理终点的输入框
-    function handleEnd (e) {
-        console.log('endvalue',e.target.value)
+    function handleEnd(e) {
+        console.log('endvalue', e.target.value)
         setValue(e.target.value)
     }
 
@@ -162,10 +168,10 @@ const App = () => {
             policy: 0,
         })
         maptop.clearOverlays();
-        search(start,end,routePolicy[optionValue])
-        function search (start,end,route) {
+        search(start, end, routePolicy[optionValue])
+        function search(start, end, route) {
             transit.setPolicy(route)
-            transit.search(start,end)
+            transit.search(start, end)
         }
     }
 
@@ -185,14 +191,14 @@ const App = () => {
     }
 
     useEffect(() => {
-        getLocalCity()
+        disLocal && getLocalCity()
         if (local != null) {
             getDegree(local, typeLocal)
         }
         if (local != null) {
             getDegree(value, typeValue)
         }
-    }, [local, value])
+    }, [local, value, disLocal])
 
     return (
         <div className="province_total">
@@ -203,7 +209,7 @@ const App = () => {
                 </div>
                 <div className="province_table">
                     <label htmlFor="end" style={{ color: 'white' }} >终点</label>
-                    <Input id="end" style={{ width: 400, marginLeft: 20, marginTop: 20 ,marginBottom:20}} onChange={handleEnd}></Input>
+                    <Input id="end" style={{ width: 400, marginLeft: 20, marginTop: 20, marginBottom: 20 }} onChange={handleEnd}></Input>
                 </div>
                 <div>
                     <Search placeholder="请输入查询种类" id="ac"
