@@ -1,16 +1,35 @@
-.searchInput {
-  width: 200px;
+
+.province_total {
+  display: grid;
+  grid-template-columns: 50% 25% 25%;
 }
-.province_map {
-  height: 400px;
-  width: 600px;
-}
-.r-result {
-  width: 600px;
-}
-.province_map_result {
+
+.province_find {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+}
+
+.searchInput {
+  width: 250px;
+  margin-bottom: 20px;
+}
+
+.province_map {
+  /* height: 600px; */
+  width: 600px;
+}
+
+.r-result {
+  width: 100%;
+}
+
+.province_table {
+  display: flex;
+  flex-direction: row;
+}
+
+.province_result {
+  height: 100vh;
+  overflow: scroll;
 }
