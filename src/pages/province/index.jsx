@@ -115,9 +115,6 @@ const App = () => {
 
     // 两地之间的行车路线规划图
     function getCarInfo(map) {
-        // map.enableScrollWheelZoom()
-        // let end = new window.BMapGL.Point(116.486419, 39.877282)
-        // getDegree(value, typeValue)
         let driving = new window.BMapGL.DrivingRoute(map, {
             renderOptions: { map: map, autoViewport: true }
         })
@@ -146,14 +143,6 @@ const App = () => {
     }
 
     // 公交导航查询，根据起始地
-    function getBusInfoinfo(map) {
-        let start = localPoint
-        let end = valuePoint
-        var routePolicy = ['BMAP_TRANSIT_POLICY_RECOMMEND', 'BMAP_TRANSIT_POLICY_LEAST_TIME',
-            'BMAP_TRANSIT_POLICY_LEAST_TRANSFER', 'BMAP_TRANSIT_POLICY_LEAST_WALKING',
-            'BMAP_TRANSIT_POLICY_AVOID_SUBWAYS', 'BMAP_TRANSIT_POLICY_FIRST_SUBWAYS']
-
-    }
     function handleChange(value, en) {
         console.log('select', value)
         let optionValue = value
@@ -167,7 +156,7 @@ const App = () => {
             renderOptions: { map: maptop, panel: 'r-result' },
             policy: 0,
         })
-        maptop.clearOverlays();
+        maptop.clearOverlays()  //清除指定覆盖物
         search(start, end, routePolicy[optionValue])
         function search(start, end, route) {
             transit.setPolicy(route)

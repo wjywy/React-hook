@@ -4,10 +4,12 @@ import { useEffect } from "react";
 import { china } from '../../data/chinese/中华人民共和国'
 import { chinaMapConfig } from "./config";
 import { resData } from "./data";
-import { useState, useRef } from "react";
+import { useState, useRef, useMemo } from "react";
 import Pieleft from './pie'
 import BarLeft from './category/index'
 import './home.css'
+
+//当useeffect的依赖项为数组或者对象的时候，使用useMemo
 
 const App = () => {
     let [id, setId] = useState(null)
@@ -79,7 +81,6 @@ export let RightPicture = (props) => {
         myEcharts = echarts.init(main1.current, )
         setData(props.item.value, props.item.value, props.item.value)
         let option = {
-
                 title: {
                        text: `${props.item.name}奶茶店数量`,
                        textStyle: {
