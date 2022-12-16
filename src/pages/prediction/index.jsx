@@ -9,7 +9,7 @@ const App = () => {
     return (
         <>
         <div>{name}</div>
-        <button onClick={() => dispatch(changeName())}>改变</button>
+        <button onClick={() => dispatch(changeName(['wangyi','chengxin']))}>改变</button>
         </>
     )
 }

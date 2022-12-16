@@ -7,8 +7,9 @@ export const pageSlice = createSlice({
     },
     // 将新增的action的信息转移到state当中
     reducers:{
-        changeName:(state) => {
-            state.name = 'cherngxin'
+        changeName:(state,action) => {
+            state.name = action.payload
+            console.log('action.payload', action.payload);
         }
     }
 })
