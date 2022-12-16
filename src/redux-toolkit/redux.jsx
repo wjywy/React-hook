@@ -32,7 +32,7 @@ function counterReducer(state = initialState, action) {
 }
 
 
-// store——当前Redux应用的state存放于一个store的对象之中
+// store——当前Redux应用的state存放于一个store的对象之中,用来把action和reducer关联到一起，通过createStore来构建store。通过subscribe来注册监听
 // store是通过传入一个reducer函数来创建的,并且有一个名为getState的方法，它返回当前状态值
 // 一个小栗子
 // import { configureStore } from '@reduxjs/toolkit'

@@ -1,9 +1,15 @@
 import React from "react";
+import { useSelector,useDispatch }from 'react-redux'
+import { changeName ,selectName} from "../slice";
 
 const App = () => {
+    const name = useSelector( selectName )
+    console.log('name',name)
+    const dispatch = useDispatch()
     return (
         <>
-        <div>欢迎来到预测页面</div>
+        <div>{name}</div>
+        <button onClick={() => dispatch(changeName())}>改变</button>
         </>
     )
 }
