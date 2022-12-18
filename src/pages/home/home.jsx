@@ -7,6 +7,7 @@ import { resData } from "./data";
 import { useState, useRef, useMemo } from "react";
 import Pieleft from './pie'
 import BarLeft from './category/index'
+import RightPie from './RightPie/index'
 import './home.css'
 
 //当useeffect的依赖项为数组或者对象的时候，使用useMemo
@@ -64,6 +65,7 @@ const App = () => {
                     {resData.data.map((item, index) => {
                         return id === item.name && <RightPicture item={item} key={index} />
                     })}
+                    <RightPie />
                 </div>
             </div>
         </>
