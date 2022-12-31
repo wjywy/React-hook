@@ -91,7 +91,6 @@ function App() {
     return (
         <>
             <div>
-                <div>热力图</div>
                 <div ref={mainEchart} style={{ width: '95%', height: '40vh' }}></div>
             </div>
         </>

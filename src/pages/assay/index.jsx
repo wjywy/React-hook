@@ -21,6 +21,22 @@ const App = () => {
     }
     return (
         <>
+            <section className="sky">
+                <span className="start"></span>
+                <span className="start"></span>
+                <span className="start"></span>
+                <span className="start"></span>
+                <span className="start"></span>
+                <span className="start"></span>
+                <span className="start"></span>
+                <span className="start"></span>
+                <span className="start"></span>
+                <span className="start"></span>
+                <span className="start"></span>
+                <span className="start"></span>
+                <span className="start"></span>
+                <span className="start"></span>
+            </section>
             <div className="array_total">
                 <div className="array_fix">
                     <div onClick={to_total} className='home_left_pie array_size' >数据总览</div>
