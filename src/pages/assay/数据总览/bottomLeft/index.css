@@ -1,0 +1,18 @@
+.index_bottomLeft {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 5px;
+}
+
+.index_bf_infor {
+    text-align: 'center';
+    background-color: '#56DFE2';
+    border-radius: 5px;
+}
+
+.index_element {
+    height: 200px;
+    width: 600px;
+    overflow-y: auto;
+}
