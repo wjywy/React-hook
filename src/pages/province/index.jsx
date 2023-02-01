@@ -190,86 +190,105 @@ const App = () => {
     }, [local, value, disLocal])
 
     return (
-        <div className="province_total">
-            <div className="province_find" >
-                <div className="province_table">
-                    <label htmlFor="start" style={{ color: 'white' }}>起点</label>
-                    <Input id="start" style={{ width: 400, marginLeft: 20, marginTop: 20 }} onChange={handleStart}></Input>
-                </div>
-                <div className="province_table">
-                    <label htmlFor="end" style={{ color: 'white' }} >终点</label>
-                    <Input id="end" style={{ width: 400, marginLeft: 20, marginTop: 20, marginBottom: 20 }} onChange={handleEnd}></Input>
-                </div>
-                <div>
-                    <Search placeholder="请输入查询种类" id="ac"
-                        className="searchInput"
-                        enterButton="点击搜索" onSearch={inputSearch}
-                        onChange={changeValue} />
-                    <Select
-                        // defaultValue={'公交导航'}
-                        value={'公交导航'}
-                        style={{ width: 150 }}
-                        onChange={handleChange}
-                        options={[
-                            {
-                                value: 0,
-                                label: '最少时间'
-                            },
-                            {
-                                value: 1,
-                                label: '推荐方案'
-                            },
-                            {
-                                value: 2,
-                                label: '最少换乘'
-                            },
-                            {
-                                value: 3,
-                                label: '最少步行'
-                            },
-                            {
-                                value: 4,
-                                label: '不乘地铁'
-                            },
-                            {
-                                value: 5,
-                                label: '优先地铁'
-                            }
-                        ]}
-                    >
-                    </Select>
-                    <Button onClick={turnFoot}>步行导航</Button>
-                    <Button onClick={turnCar}>驾车导航</Button>
-                </div>
+        <>
+            <section className="sky">
+                <span className="start"></span>
+                <span className="start"></span>
+                <span className="start"></span>
+                <span className="start"></span>
+                <span className="start"></span>
+                <span className="start"></span>
+                <span className="start"></span>
+                <span className="start"></span>
+                <span className="start"></span>
+                <span className="start"></span>
+                <span className="start"></span>
+                <span className="start"></span>
+                <span className="start"></span>
+                <span className="start"></span>
 
-                <Map
-                    ref={(ref) => getMap(ref)}
-                    className={'province_map'}
-                    enableScrollWheelZoom>
-                    {localPoint != null &&
-                        <Marker position={localPoint}   //标注点的坐标，可以通过设置state时代每次点击标注点就改变此位置
-                            autoViewport   //自动聚焦视野
-                            enableDragging />
-                    }
-                    <NavigationControl />
-                    {/* <InfoWindow position={{ lng: 116.402544, lat: 39.928216 }}>
+            </section>
+            <div className="province_total">
+                <div className="province_find" >
+                    <div className="province_table">
+                        <label htmlFor="start" style={{ color: 'white' }}>起点</label>
+                        <Input id="start" style={{ width: 400, marginLeft: 20, marginTop: 20 }} onChange={handleStart}></Input>
+                    </div>
+                    <div className="province_table">
+                        <label htmlFor="end" style={{ color: 'white' }} >终点</label>
+                        <Input id="end" style={{ width: 400, marginLeft: 20, marginTop: 20, marginBottom: 20 }} onChange={handleEnd}></Input>
+                    </div>
+                    <div>
+                        <Search placeholder="请输入查询种类" id="ac"
+                            className="searchInput"
+                            enterButton="点击搜索" onSearch={inputSearch}
+                            onChange={changeValue} />
+                        <Select
+                            // defaultValue={'公交导航'}
+                            value={'公交导航'}
+                            style={{ width: 150 }}
+                            onChange={handleChange}
+                            options={[
+                                {
+                                    value: 0,
+                                    label: '最少时间'
+                                },
+                                {
+                                    value: 1,
+                                    label: '推荐方案'
+                                },
+                                {
+                                    value: 2,
+                                    label: '最少换乘'
+                                },
+                                {
+                                    value: 3,
+                                    label: '最少步行'
+                                },
+                                {
+                                    value: 4,
+                                    label: '不乘地铁'
+                                },
+                                {
+                                    value: 5,
+                                    label: '优先地铁'
+                                }
+                            ]}
+                        >
+                        </Select>
+                        <Button onClick={turnFoot}>步行导航</Button>
+                        <Button onClick={turnCar}>驾车导航</Button>
+                    </div>
+
+                    <Map
+                        ref={(ref) => getMap(ref)}
+                        className={'province_map'}
+                        enableScrollWheelZoom>
+                        {localPoint != null &&
+                            <Marker position={localPoint}   //标注点的坐标，可以通过设置state时代每次点击标注点就改变此位置
+                                autoViewport   //自动聚焦视野
+                                enableDragging />
+                        }
+                        <NavigationControl />
+                        {/* <InfoWindow position={{ lng: 116.402544, lat: 39.928216 }}>
                 </InfoWindow> */}
-                    <CityListControl />  {/*当宽度大于400且高度大于350时才会显示出来，有三个属性，分别是map(会主动继承父级实例),anchor,offset*/}
-                    <MapTypeControl />   {/*地图类型控件，默认位于地图右上角*/}
-                    <ScaleControl />
-                </Map>
-            </div>
+                        <CityListControl />  {/*当宽度大于400且高度大于350时才会显示出来，有三个属性，分别是map(会主动继承父级实例),anchor,offset*/}
+                        <MapTypeControl />   {/*地图类型控件，默认位于地图右上角*/}
+                        <ScaleControl />
+                    </Map>
+                </div>
 
-            <div></div>
-            <AutoComplete
-                input='ac'    //挂载的元素ID，若传值为空，则会自动生成一个input元素
-                location='全国'   //设定所属结果的返回范围
-            />
-            <div className="province_result">
-                <div id="r-result" className="r-result"></div>
-                <div id="value_result" ref={value_result}></div>
-            </div>
-        </ div>
+                <div></div>
+                <AutoComplete
+                    input='ac'    //挂载的元素ID，若传值为空，则会自动生成一个input元素
+                    location='全国'   //设定所属结果的返回范围
+                />
+                <div className="province_result">
+                    <div id="r-result" className="r-result"></div>
+                    <div id="value_result" ref={value_result}></div>
+                </div>
+            </ div>
+        </>
     )
 }
 

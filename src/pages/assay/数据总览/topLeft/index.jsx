@@ -156,8 +156,7 @@ function App() {
     }, [])
     return (
         <>
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <div>指标权重分析</div>
+            <div style={{ display: 'flex', flexDirection: 'column' }} className='assay_border'>
                 <div ref={mainEchart} style={{ width: '90%', height: '45vh' }}></div>
             </div>
         </>

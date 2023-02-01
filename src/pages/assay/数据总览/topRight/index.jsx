@@ -207,8 +207,7 @@ function App() {
     })
     return (
         <>
-            <div >
-                <div>茶饮走向趋势</div>
+            <div className='assay_border'>
                 <div ref={mainEchart} style={{width: '100%', height: '45vh'}}></div>
             </div>
         </>

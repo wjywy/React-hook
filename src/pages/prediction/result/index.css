@@ -1,0 +1,31 @@
+.resultBorder {
+    position: relative;
+    background: rgba(1, 19, 67, 0.3);
+    border: 2px solid #00a1ff;
+    border-radius: 8px;
+    margin-top: 50px;
+}
+
+.resultBorder::before {
+    position: absolute;
+    top: -2px;
+    bottom: -2px;
+    left: 30px;
+    width: calc(100% - 100px);
+    content: "";
+    border-top: 2px solid #016886;
+    border-bottom: 2px solid #016886;
+    z-index: 0;
+}
+
+.resultBorder::after {
+    position: absolute;
+    top: 30px;
+    right: -2px;
+    left: -2px;
+    height: calc(100% - 100px);
+    content: "";
+    border-right: 2px solid #016886;
+    border-left: 2px solid #016886;
+    z-index: 0;
+}

@@ -1,6 +1,7 @@
 .toptab_select_father {
   height: 60px;
 }
+
 .toptab_select {
   position: fixed;
   display: flex;
@@ -14,4 +15,16 @@
   width: 100%;
   font-size: 13px;
   cursor: pointer;
+}
+
+
+.select {
+  width: 60px;
+  height: 40px;
+  background-color: #00a1ff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
 }

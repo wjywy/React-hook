@@ -1,0 +1,15 @@
+.listBox::-webkit-scrollbar {
+    width: 10px;
+    /* height: 10px;   */
+}
+
+/* 滑块颜色 */
+.listBox::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 5px;
+}
+
+/* 鼠标移入变色 */
+.listBox::-webkit-scrollbar-thumb:hover {
+    background: #f40;
+}

@@ -1,0 +1,73 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.login_tocenter {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    height: 50%;
+    width: 25%;
+    border-radius: 20px;
+}
+
+.login_text_password {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.login_placeholder::-webkit-input-placeholder {
+    font-size: 10px;
+}
+
+.login_divide {
+    font-size: 8px;
+    height: 1px;
+    width: 100%;
+    background-color: rgb(240, 241, 244);
+    margin-bottom: 10px;
+}
+
+.login_sendExamWord {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 8px;
+}
+
+.login_forget_find {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.login_forgrtPassword,
+.login_findPassword {
+    margin-right: 1vw;
+}
+
+.login_forgrtPassword:hover {
+    cursor: pointer;
+}
+
+.login_findPassword:hover {
+    cursor: pointer;
+}
+
+.login_register {
+    font-size: 8px;
+    color: rgb(191, 191, 191);
+    text-align: center;
+    margin-top: 10px;
+    cursor: pointer;
+}

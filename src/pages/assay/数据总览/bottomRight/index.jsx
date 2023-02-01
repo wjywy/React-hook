@@ -5,6 +5,7 @@ import React,
 } from 'react';
 import * as echarts from 'echarts';
 import 'echarts-wordcloud';
+import './index.css';
 
 function App() {
     const mainEchart = useRef(null)
@@ -90,7 +91,7 @@ function App() {
     }, [])
     return (
         <>
-            <div>
+            <div className='assay_border'>
                 <div ref={mainEchart} style={{ width: '95%', height: '40vh' }}></div>
             </div>
         </>

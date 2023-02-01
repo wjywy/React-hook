@@ -3,13 +3,11 @@ import React,
     useRef,
     useEffect
 } from 'react';
-import { useState } from 'react';
 import './index.css'
 
 const App = () => {
     const bf_scroll = useRef(null)
     useEffect(() => {
-        console.log(bf_scroll.current.scrollTop)
         setInterval(() => {
             bf_scroll.current.scrollTop = bf_scroll.current.scrollTop + 1
             if (bf_scroll.current.scrollTop === 142) {
@@ -20,7 +18,7 @@ const App = () => {
 
     return (
         <>
-            <div>
+            <div className='assay_border'>
                 <div style={{ textAlign: 'center', backgroundColor: '#56DFE2' }} className='index_bf_infor'>预警信息</div>
                 <div className='index_bottomLeft'>
                     <div>用户</div>
@@ -95,8 +93,6 @@ const App = () => {
                         <div>兵临倒闭</div>
                     </div>
                 </div>
-                {/* </div>
-                </div> */}
             </div>
         </>
     )
